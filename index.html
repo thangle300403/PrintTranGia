@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Print Shop ERP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        /* Brand Colors */
+        --brand-color-1: #0037c1;
+        --brand-color-2: #fa8c16;
+        --brand-color-3: #2dbd73;
+
+        /* Blue Scale */
+        --blue-50: #f0fbff;
+        --blue-100: #eaeffa;
+        --blue-150: #c1d0f6;
+        --blue-200: #acc0f3;
+        --blue-300: #769dea;
+        --blue-400: #306de4;
+        --blue-500: #1250dc;
+        --blue-600: #0037c1;
+        --blue-700: #002c9a;
+        --blue-800: #002174;
+        --blue-900: #00164d;
+        --blue-1000: #000b27;
+        --popup-color: #194891;
+
+        --gradient-primary: linear-gradient(to right,var(--blue-400),var(--blue-600));
+        --gradient-vivid: linear-gradient(to bottom right,var(--blue-300),var(--blue-500));
+        --gradient-subtle: linear-gradient(to bottom,var(--blue-50),var(--blue-200));
+        --gradient-deep: linear-gradient(135deg, var(--blue-700), var(--blue-900));
+        --gradient-ocean: linear-gradient(135deg, var(--blue-500), var(--blue-700));
+        --gradient-sky: linear-gradient(180deg, var(--blue-150), var(--blue-400));
+        --gradient-success: linear-gradient(to bottom right,#89e6b6,var(--brand-color-3));
+        --gradient-deep-success: linear-gradient(to bottom right, #4bc083, #0b6426);
+        --gradient-danger: linear-gradient(135deg, var(--red-600), var(--red-800));
+        --gradient-sunset: linear-gradient(135deg, var(--red-300), var(--red-500));
+        --gradient-deep-red: linear-gradient(270deg, var(--red-700), var(--red-900));
+        --gradient-sunshine: linear-gradient(to right, var(--yellow-400), var(--yellow-500));
+        --gradient-warning: linear-gradient(135deg, var(--yellow-600), var(--brand-color-2));
+        --gradient-sunset-fire: linear-gradient(to bottom right, var(--brand-color-2), var(--red-700));
+
+        /* Grayscale - New, with better contrast */
+        --black: #000;
+        --white: #fff;
+        --white-200: #fcfcfc;
+        --gray-100: #F9FAFB; /* Main BG Light */
+        --gray-150: #F3F4F6; /* Subtle BG Light */
+        --gray-200: #E5E7EB; /* Hover Light */
+        --gray-300: #D1D5DB; /* Borders Light */
+        --gray-400: #9CA3AF; /* Muted Text */
+        --gray-500: #6B7280; /* Normal Text */
+        --gray-600: #4B5563; /* Main Text (Light), Muted Text (Dark) */
+        --gray-700: #374151; /* Main Border/Subtle BG Dark */
+        --gray-800: #1F2937; /* Card BG Dark */
+        --gray-800-80: rgba(31, 41, 55, 0.8);
+        --gray-900: #111827; /* Main BG Dark */
+        --gray-1000: #030712;
+
+
+        /* Red Scale */
+        --red-100: #fffbfa;
+        --red-200: #fef3f2;
+        --red-300: #fee4e2;
+        --red-400: #ffcdca;
+        --red-500: #fda29b;
+        --red-600: #fa7066;
+        --red-700: #f04438;
+        --red-800: #d92d20;
+        --red-900: #b42318;
+        --red-1000: #912018;
+
+        /* Yellow Scale */
+        --yellow-100: #fffcf5;
+        --yellow-200: #fff3e1;
+        --yellow-300: #fef0c7;
+        --yellow-400: #fedf89;
+        --yellow-500: #fec84b;
+        --yellow-600: #fdb022;
+        --yellow-700: #f79009;
+
+        /* Các biến layout (giữ nguyên) */
+        --font-family-base: "Roboto", sans-serif;
+        --font-size-sm: 13px;
+        --font-size-md: 15px;
+        --font-size-lg: 18px;
+        --font-weight-regular: 400;
+        --font-weight-medium: 500;
+        --font-weight-bold: 600;
+        --sidebar-width: 250px;
+        --border-radius-sm: 4px;
+        --border-radius-md: 10px;
+        --border-radius-lg: 99px;
+        --spacing-unit-sm: 5px;
+        --spacing-unit-md: 10px;
+        --spacing-unit: 9px;
+        --sidebar-collapsed-width: 88px;
+      }
+      html {
+        font-size: 100%; /* Default base font size (16px) */
+      }
+      body {
+        font-family: var(--font-family-base);
+      }
+      /* Custom Select Arrow */
+      select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+        background-position: right 0.5rem center;
+        background-repeat: no-repeat;
+        background-size: 1.5em 1.5em;
+        padding-right: 2.5rem;
+      }
+      /* Toast Animations */
+      @keyframes slide-in-right {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+      }
+      .animate-slide-in-right {
+          animation: slide-in-right 0.3s ease-out forwards;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.5",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "jspdf": "https://aistudiocdn.com/jspdf@^2.5.1",
+    "jspdf-autotable": "https://aistudiocdn.com/jspdf-autotable@^3.8.2",
+    "react-dom": "https://aistudiocdn.com/react-dom@^19.2.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-[var(--gray-100)]">
+    <div id="root"></div>
+    
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

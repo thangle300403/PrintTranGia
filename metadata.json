@@ -1,0 +1,5 @@
+{
+  "name": "Print Shop ERP - TRANGIA",
+  "description": "A comprehensive ERP solution for a printing company, starting with modules for sales quoting and accounting. This application allows sales staff to create detailed, complex quotes for printing jobs and enables the accounting department to manage orders, invoices, and payments seamlessly.",
+  "requestFramePermissions": []
+}
